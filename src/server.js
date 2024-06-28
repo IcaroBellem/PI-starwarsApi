@@ -13,7 +13,10 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch(err => console.log(err));
 
 const characterRoutes = require('./routes/characters');
-app.use('/', characterRoutes);
+app.use('/src/routes/characters', characterRoutes);
+
+const movieRoutes = require('./routes/movies');
+app.use('/src/routes/movies', movieRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
