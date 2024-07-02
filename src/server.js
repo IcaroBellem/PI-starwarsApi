@@ -1,23 +1,26 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const connectDB = require('./database/connection');
 const bodyParser = require('body-parser');
+const characters = require('./routes/characters');
+const movies = require('./routes/movies');
 require('dotenv').config();
-
 const app = express();
-const port = process.env.PORT || 3000;
+
+const startConnection = async () => {
+    try {
+        await connectDB();
+        const port = process.env.PORT || 3000;
+        app.listen(port, () => {
+            console.log(`Server running on ${port}`);
+        });
+    } catch (err) {
+        console.log('Erro ao conectar com o banco', err);
+        process.exit(1);
+    }
+};
+startConnection();
+module.exports = startConnection;
 
 app.use(bodyParser.json());
-
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
-
-const characterRoutes = require('./routes/characters');
-app.use('/src/routes/characters', characterRoutes);
-
-const movieRoutes = require('./routes/movies');
-app.use('/src/routes/movies', movieRoutes);
-
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+app.use('/', characters);
+app.use('/', movies);

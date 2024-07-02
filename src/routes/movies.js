@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
+
 const movieController = require('../controllers/movieController');
 
-router.get('/', movieController.getAllMovies);
+router.get('/starwars-movies', movieController.getAllMovies);
 
-router.get('/:id', movieController.getMovieById);
+router.get('/starwars-movies/:id', movieController.getMovieById);
 
-router.post('/', movieController.createMovie);
+router.post('/starwars-movies', movieController.createMovie);
 
-router.put('/:id', movieController.updateMovie);
+router.put('/starwars-movies/:id', movieController.updateMovie);
 
-router.delete('/:id', movieController.deleteMovie);
+router.delete('/starwars-movies/:id', movieController.deleteMovie);
 
 module.exports = router;
