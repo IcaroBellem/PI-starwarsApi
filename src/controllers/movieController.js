@@ -23,7 +23,7 @@ exports.createMovie = async (req, res) => {
     const movie = new Movie({
         title: req.body.title,
         description: req.body.description,
-        img_url: req.body.img_url,
+        image_url: req.body.image_url,
         trailer_url: req.body.trailer_url,
     });
 
@@ -42,7 +42,7 @@ exports.updateMovie = async (req, res) => {
 
         if (req.body.title) movie.title = req.body.title;
         if (req.body.description) movie.description = req.body.description;
-        if (req.body.img_url) movie.img_url = req.body.img_url;
+        if (req.body.image_url) movie.image_url = req.body.image_url;
         if (req.body.trailer_url) movie.trailer_url = req.body.trailer_url;
 
         const updatedMovie = await movie.save();
