@@ -26,7 +26,7 @@ exports.createCharacter = async (req, res) => {
         affiliation: req.body.affiliation,
         homeworld: req.body.homeworld,
         description: req.body.description,
-        img_url: req.body.img_url,
+        image_url: req.body.image_url,
     });
 
     try {
@@ -39,7 +39,7 @@ exports.createCharacter = async (req, res) => {
 
 exports.updateCharacter = async (req, res) => {
     try {
-        const character = await Character.findById(req.params.id);
+        const character = await Character.find();
         if (!character) return res.status(404).json({ message: 'Character not found' });
 
         if (req.body.name) character.name = req.body.name;
@@ -47,7 +47,7 @@ exports.updateCharacter = async (req, res) => {
         if (req.body.affiliation) character.affiliation = req.body.affiliation;
         if (req.body.homeworld) character.homeworld = req.body.homeworld;
         if (req.body.description) character.description = req.body.description;
-        if (req.body.img_url) character.img_url = req.body.img_url;
+        if (req.body.image_url) character.image_url = req.body.image_url;
 
         const updatedCharacter = await character.save();
         res.json(updatedCharacter);

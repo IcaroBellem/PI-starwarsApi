@@ -45,7 +45,7 @@ MoviesSection.propTypes = {
       _id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string,
-      img_url: PropTypes.string,
+      image_url: PropTypes.string,
       trailer_url: PropTypes.string,
     })
   ).isRequired,

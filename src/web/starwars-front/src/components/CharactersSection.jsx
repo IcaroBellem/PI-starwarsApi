@@ -22,8 +22,8 @@ const CharactersSection = ({ characters }) => {
               className="w-24 h-24 bg-gray-600 rounded-full flex items-center justify-center overflow-hidden cursor-pointer"
               onClick={() => handleCharacterClick(character)}
             >
-              {character.img_url ? (
-                <img src={character.img_url} alt={character.name} className="w-full h-full object-cover" />
+              {character.image_url ? (
+                <img src={character.image_url} alt={character.name} className="w-full h-full object-cover" />
               ) : (
                 <span className="text-white opacity-50">No Image</span>
               )}
@@ -41,7 +41,7 @@ const CharactersSection = ({ characters }) => {
             >
               X
             </button>
-            <img src={selectedCharacter.img_url} alt={selectedCharacter.name} className="w-32 h-32 mx-auto rounded-full mb-4" />
+            <img src={selectedCharacter.image_url} alt={selectedCharacter.name} className="w-32 h-32 mx-auto rounded-full mb-4" />
             <h3 className="text-2xl font-semibold mb-2">{selectedCharacter.name}</h3>
             <p><strong>Espécie:</strong> {selectedCharacter.species}</p>
             <p><strong>Afiliação:</strong> {selectedCharacter.affiliation}</p>
@@ -59,11 +59,11 @@ CharactersSection.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string,
-      img_url: PropTypes.string,
       species: PropTypes.string,
       affiliation: PropTypes.string,
       homeworld: PropTypes.string,
       description: PropTypes.string,
+      image_url: PropTypes.string,
     })
   ).isRequired,
 };

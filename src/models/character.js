@@ -6,7 +6,7 @@ const characterSchema = new mongoose.Schema({
     affiliation: String,
     homeworld: String,
     description: String,
-    img_url: String,
+    image_url: String,
 });
 
 module.exports = mongoose.model('Character', characterSchema);
